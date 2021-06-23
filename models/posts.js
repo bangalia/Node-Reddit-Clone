@@ -29,11 +29,21 @@ app.get('/posts/:id', (req, res) => {
     });
 });
 
+app.get('/n/:subreddit', (req, res) => {
+  Post.find({ subreddit: req.params.subreddit }).lean()
+    .then((posts) => res.render('posts-index', { posts }))
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 it('Should create with valid attributes at POST /posts/new', function(done) {
 
 ...
 
 });
+
+subreddit: { type: String, required: true },
 
 after(function () {
   Post.findOneAndDelete(newPost);
