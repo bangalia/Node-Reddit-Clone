@@ -1,10 +1,23 @@
-require('./controllers/posts')(app);
+// Require Libraries
+const express = require('express');
+const https = require('https');
+const exphbs  = require('express-handlebars');
+const port = 3000
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// App Setup
+const app = express();
+app.use(express.static('public'));
 
-// Set db
-require('./data/reddit-db');
-module.exports = app;
+// Middleware
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
-require('./controllers/comments.js')(app);
+
+// Routes
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
