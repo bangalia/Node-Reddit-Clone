@@ -4,6 +4,7 @@ const chaiHttp = require('chai-http');
 const { describe, it } = require('mocha');
 const app = require('../server');
 const agent = chai.request.agent(app);
+const Recaptcha = require('express-recaptcha').RecaptchaV3;
 
 const should = chai.should();
 
