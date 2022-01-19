@@ -3,7 +3,6 @@ const dotenv = require('dotenv').config();
 const express = require('express');
 const https = require('https');
 const exphbs  = require('express-handlebars');
-const app = express()
 const port = 3000
 
 // App Setup
